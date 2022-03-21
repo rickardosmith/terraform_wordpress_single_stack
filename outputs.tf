@@ -1,8 +1,10 @@
-# output "staging_instance_name" {
-#   value = "${aws_instance.staging.tags.Name}"
-# }
+output "us_region_staging_instance_public_dns" {
+  value       = [for instance in module.us.aws_instance_staging_public_dns : "http://${instance}}"]
+  description = "Staging Instance Public DNS"
+}
 
-# output "production_instance_name" {
-#   value = "${aws_instance.production.tags.Name}"
+# output "us_region_production_instance_name" {
+#   value       = module.us.aws_instance_production
+#   description = "Production Instance Name"
 # }
 

@@ -27,7 +27,6 @@ resource "aws_route_table" "public_route_table" {
 }
 
 resource "aws_subnet" "public" {
-
   count             = length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))
   vpc_id            = aws_vpc.main.id
   cidr_block        = cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...)[count.index]
@@ -48,12 +47,16 @@ resource "aws_route_table_association" "public_rta" {
 resource "aws_network_interface" "public_nic_stage" {
   count = length(var.clients)
 
-  subnet_id = aws_subnet.public[count.index%length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
+  security_groups = [aws_security_group.web.id, aws_security_group.remote.id, aws_security_group.alb.id]
+  subnet_id       = aws_subnet.public[count.index % length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
+  description     = "Public network interface for Staging"
 }
 
-resource "aws_network_interface" "public_nic_prod" {
-  count = length(var.clients)
+# resource "aws_network_interface" "public_nic_prod" {
+#   count = length(var.clients)
 
-  subnet_id = aws_subnet.public[count.index%length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
-}
+#   security_groups = [aws_security_group.web.id, aws_security_group.remote.id, aws_security_group.alb.id]
+#   subnet_id       = aws_subnet.public[count.index % length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
+#   description     = "Public network interface for Production"
+# }
 
