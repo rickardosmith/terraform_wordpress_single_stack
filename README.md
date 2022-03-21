@@ -35,6 +35,8 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_clients"></a> [clients](#input\_clients) | Client list | `list(map(string))` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | n/a | yes |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type | `string` | `"t2.micro"` | no |
 | <a name="input_remote_access_cidr"></a> [remote\_access\_cidr](#input\_remote\_access\_cidr) | A list of IP address to allow for remote access | `list(any)` | `[]` | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | VPC name | `string` | n/a | yes |
@@ -44,5 +46,5 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_us_region_staging_instance_public_dns"></a> [us\_region\_staging\_instance\_public\_dns](#output\_us\_region\_staging\_instance\_public\_dns) | Staging Instance Public DNS |
+| <a name="output_us_region_ec2_instance_public_dns"></a> [us\_region\_ec2\_instance\_public\_dns](#output\_us\_region\_ec2\_instance\_public\_dns) | EC2 Instance Public DNS |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

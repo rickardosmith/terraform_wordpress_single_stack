@@ -21,9 +21,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_instance.staging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_internet_gateway.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
-| [aws_network_interface.public_nic_stage](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
+| [aws_network_interface.public_nic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
 | [aws_route_table.public_route_table](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table) | resource |
 | [aws_route_table_association.public_rta](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
@@ -39,6 +39,8 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_clients"></a> [clients](#input\_clients) | Client list | `list(string)` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | n/a | yes |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type | `string` | n/a | yes |
 | <a name="input_remote_access_cidr"></a> [remote\_access\_cidr](#input\_remote\_access\_cidr) | A list of IP address to allow for remote access | `list(any)` | n/a | yes |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | VPC name | `string` | n/a | yes |
@@ -48,5 +50,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aws_instance_staging_public_dns"></a> [aws\_instance\_staging\_public\_dns](#output\_aws\_instance\_staging\_public\_dns) | Staging Instance Public DNS |
+| <a name="output_aws_ec2_instance_public_dns"></a> [aws\_ec2\_instance\_public\_dns](#output\_aws\_ec2\_instance\_public\_dns) | EC2 Instance Public DNS |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

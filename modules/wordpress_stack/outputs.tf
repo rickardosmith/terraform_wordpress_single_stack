@@ -1,9 +1,7 @@
-output "aws_instance_staging_public_dns" {
-  value       = aws_instance.staging.*.public_dns
-  description = "Staging Instance Public DNS"
-}
+output "aws_ec2_instance_public_dns" {
+  value = [
+    for id, instance in aws_instance.this : "${id} - http://${instance.public_dns}"
+  ]
 
-# output "aws_instance_production" {
-#   value       = aws_instance.production.*.id
-#   description = "Production Instance IDs"
-# }
+  description = "EC2 Instance Public DNS"
+}

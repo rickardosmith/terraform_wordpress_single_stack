@@ -1,7 +1,10 @@
 vpc_name = "Main"
 vpc_cidr = "10.1.0.0/16"
 
-remote_access_cidr = ["72.53.208.173/32"]
+environment   = "Staging"
+instance_type = "t2.micro"
+
+remote_access_cidr = ["1.2.3.4/32"]
 
 clients = [
   {

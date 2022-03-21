@@ -3,6 +3,17 @@ variable "clients" {
   description = "Client list"
 }
 
+variable "environment" {
+  type        = string
+  description = "Environment name"
+}
+
+variable "instance_type" {
+  type        = string
+  description = "Instance type"
+  default     = "t2.micro"
+}
+
 variable "vpc_name" {
   type        = string
   description = "VPC name"

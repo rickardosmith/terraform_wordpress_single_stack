@@ -44,19 +44,10 @@ resource "aws_route_table_association" "public_rta" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
-resource "aws_network_interface" "public_nic_stage" {
+resource "aws_network_interface" "public_nic" {
   count = length(var.clients)
 
   security_groups = [aws_security_group.web.id, aws_security_group.remote.id, aws_security_group.alb.id]
   subnet_id       = aws_subnet.public[count.index % length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
-  description     = "Public network interface for Staging"
+  description     = "Public network interface for ${var.environment}"
 }
-
-# resource "aws_network_interface" "public_nic_prod" {
-#   count = length(var.clients)
-
-#   security_groups = [aws_security_group.web.id, aws_security_group.remote.id, aws_security_group.alb.id]
-#   subnet_id       = aws_subnet.public[count.index % length(cidrsubnets(var.vpc_cidr, [for i in range(3) : 8]...))].id
-#   description     = "Public network interface for Production"
-# }
-

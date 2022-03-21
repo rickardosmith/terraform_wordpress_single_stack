@@ -8,9 +8,12 @@ module "us" {
   vpc_name    = "${var.vpc_name}-us"
   vpc_tenancy = var.vpc_tenancy
 
+  environment        = var.environment
   remote_access_cidr = var.remote_access_cidr
 
   clients = [for client in var.clients : client.name if client.region == "us-east-1"]
+
+  instance_type = var.instance_type
 }
 
 # module "ca" {
